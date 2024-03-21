@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using Thox.Hubs;
 using Thox.Models;
 
 
@@ -7,10 +9,13 @@ namespace Thox.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        private readonly IHubContext<SignalHub> _signalHubContext;
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IHubContext<SignalHub> signalHubContext)
             : base(options)
         {
+            _signalHubContext = signalHubContext;
         }
+
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomPrice> Prices { get; set; }
@@ -18,5 +23,31 @@ namespace Thox.Data
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Group> Groups { get; set; }
+        public DbSet<ApiKeys> ApiKeys { get; set; }
+
+        public override int SaveChanges()
+        {
+            DetectAndUpdateSite();
+            return base.SaveChanges();
+        }
+
+        public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        {
+            DetectAndUpdateSite();
+            return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+
+        private void DetectAndUpdateSite()
+        {
+            var modifiedPrices = ChangeTracker.Entries<RoomPrice>()
+                .Where(e => e.State == EntityState.Modified)
+                .Select(e => e.Entity);
+
+            foreach (var price in modifiedPrices)
+            {
+                // Send SignalR notification
+                _signalHubContext.Clients.All.SendAsync("PriceUpdated", price);
+            }
+        }
     }
 }

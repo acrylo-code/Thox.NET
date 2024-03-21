@@ -5,6 +5,9 @@ using Thox.Services;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using System.Diagnostics;
+using Thox.Hubs;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +23,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -68,6 +72,7 @@ app.UseEndpoints(endpoints =>
       name: "default",
       pattern: "{controller=Home}/{action=Index}/{id?}");
     endpoints.MapRazorPages();
+    endpoints.MapHub<SignalHub>("/signalHub");
 });
 
 app.Run();
@@ -81,6 +86,46 @@ class Main
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
         IConfigurationRoot configuration = builder.Build();
+
         return configuration["AppSettings:" + key];
+    }
+
+    static async Task TestAPI()
+    {
+        // Your API endpoint URL
+        string apiUrl = "https://localhost:7212/api/RoomPrices/";
+
+        // Your API key
+        string apiKey = "thox.WWrN3939UZYyVzKILrxBYwOpbOT3mYCR6fUQfRQQXWnJCsXYHGCpC1dMjCQbIvbl";
+
+        // Create an HttpClient instance
+        using (HttpClient client = new HttpClient())
+        {
+            // Add the API key to the request headers
+            client.DefaultRequestHeaders.Add("Api-Key", apiKey);
+
+            try
+            {
+                // Send a GET request to the API endpoint
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                // Check if the request was successful
+                if (response.IsSuccessStatusCode)
+                {
+                    // Read the response content
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    Debug.WriteLine("Response from API:");
+                    Debug.WriteLine(responseBody);
+                }
+                else
+                {
+                    Debug.WriteLine($"Failed to call API. Status code: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
     }
 }
