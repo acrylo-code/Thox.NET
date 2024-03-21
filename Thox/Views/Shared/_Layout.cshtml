@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Thox</title>
+    <link rel="stylesheet" href="~/css/header.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Thox.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <script defer src="~/js/header.js"></script>
+    <script src="https://kit.fontawesome.com/787b565eca.js" crossorigin="anonymous"></script>
+    <script defer src="~/js/GDPR.js" ></script>
+    <!-- http only header && same origen-->
+
+
+
+</head>
+<body>
+    <header>
+            <div class="header">
+                <div class="header-menu">
+                    <!-- logo -->
+                    <div class="header-menu-logo">
+                        <a href="/">
+                            <img src="/images/thox-logo.png" href="/" alt="Logo">
+                        </a>
+                    </div>
+                    <div class="header-menu__small">
+                        <!-- Menu Bar Code -->
+                        <label class="header-menu-burger checkbtn">
+                            <input type="checkbox" id="check" class="checkblock">
+                            <svg id="header-menu-burger" viewBox="0 0 32 32">
+                                <path class="header-menu-burger__line header-menu-burger__line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                                <path class="header-menu-burger__line" d="M7 16 27 16"></path>
+                            </svg>
+                            <ul class="header-menu-side-bar">
+                                @* <li><a href="/#Support"> Home</a></li> *@
+                                <li><a href="/reservation/">Reserveer</a></li>
+                                @* <li><a href="/#information">Informatie</a></li> *@
+                                <li><a href="/contact/form">Vragen</a></li>
+                                <li><a href="/contact/me">Contact</a></li>
+                                <li><a href="/leaderboard/">Leaderboard</a></li>
+                                @* <li><a href="/uw_groep/">Uw groep</a></li> *@
+                                <partial name="_LoginPartial" />
+                            </ul>
+                        </label>
+                    </div>
+                </div>
+            </div>
+          </header>
+    <div class="loader_container" id="site_loader">
+        <svg class="loader" id="eZyYAGPOcQS1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><path d="M0.230131,-59.584416v119.64976" transform="translate(29.750649 159.219656)" fill="none" stroke="#3f5787" stroke-width="9" stroke-linecap="round" /><path d="M-22.414489,-13.338154l45.028677,25.98076" transform="translate(52.395269 112.973394)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M-30.740481,18.415704l61.39046-35.44686" transform="translate(119.330791 80.421156)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M-30.540185,-17.118302l61.40969,35.45796" transform="translate(180.520955 80.508302)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M-21.974531,13.800984l44.99905-25.96911" transform="translate(233.364991 85.035876)" fill="none" stroke="#3f5787" stroke-width="9" stroke-linecap="round" /><path d="M53.521805,31.061468l-106.4095-61.43775" transform="translate(202.887695 41.806282)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M53.661553,-30.376282l-106.38951,61.42665" transform="translate(96.359217 41.786282)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M-21.209502,-12.159226l44.99905,26.017591" transform="translate(64.820762 85.015876)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M-24.063673,12.461576l44.967264-25.98076" transform="translate(249.077189 113.180705)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M0,-59.571748L0,60.00088" transform="translate(269.98078 159.310401)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M0.001756,-35.32467v67.68899" transform="translate(74.979024 160.94067)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M-30.027192,-19.541576l60.03074,34.63954" transform="translate(105.007972 212.846576)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M0,-26.977512v51.788298" transform="translate(135.108244 255.094134)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M52.732801,30.437333l-105.03074-60.61992" transform="translate(82.278719 249.467587)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M-51.979871,30.488214l103.959743-60.61584" transform="translate(218.000908 249.438907)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M29.479871,-19.562075l-60.038166,34.63955" transform="translate(195.546785 212.867065)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M-1.072303,-27.022418v51.788298" transform="translate(166.060793 255.13904)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /><path d="M0.02628,34.746793l-.091752-67.662709" transform="translate(225.046252 158.558197)" fill="none" stroke="#3f5787" stroke-width="3" stroke-linecap="round" /></svg>
+    </div>
+    <div class="gdpr_container hide">
+        <section class="gdpr-consent">
+            <div class="gdpr-consent-description">
+                <i class="fa-solid fa-cookie-bite fa-2xl"></i>
+                <p>Deze website gebruikt cookies.</p>
+            </div>
+            <div class="gdpr-consent__choice">
+                <button class="gdpr-consent__button--accept">Toestaan</button>
+                <button class="gdpr-consent__button--reject">Afwijzen</button>
+            </div>
+        </section>
+    </div>
+@RenderBody()
+
+@*     <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Thox - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer> *@
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

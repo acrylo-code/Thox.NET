@@ -1,0 +1,37 @@
+
+
+<link rel="stylesheet" href="../../Components/Calender/Calender_Element.css">
+<div class="calender_box">
+    <div class="calendar">
+        <div class="icons">
+            <span id="prev" class="material-symbols-rounded">< </span>
+            <p class="current-date"></p>
+            <span id="next" class="material-symbols-rounded"> ></span>
+        </div><br>
+        <ul class="weeks">
+            <li>Zo</li>
+            <li>Ma</li>
+            <li>Di</li>
+            <li>Wo</li>
+            <li>Do</li>
+            <li>Vr</li>
+            <li>Za</li>
+        </ul>
+        <ul class="days" id="days"></ul>
+    </div>
+    <div class="time_selector" id="time">
+        <h4> Selecteer een tijdstip.</h4>
+        <p class="white" id="time_selector_title"> <p>
+        <p class='no_data' id="no_date">geen tijdstippen beschikbaar, kijk later terug.</p>
+        <p class='no_data_text' d="no_date">Dit kan zijn omdat we vandaag niet open zijn of omdat je te ver in het voren plant.</p>
+        <div class="time_slot_grid">
+            <div class="time_slot">
+                <a href="/reseveren/details.php?aantalPers?php echo(substr($slot['start_time'], 0, -3));?></a>
+            </div>
+        </div>onen=<?php echo $aantalPersonen . " &datum=" . $datum . " &tijd=" . $slot['start_time'];?>" class="time_button"></a>
+        <a class="time_button disabled"></a>
+    </div>
+
+
+
+</div>

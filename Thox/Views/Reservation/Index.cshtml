@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Aantal personen";
+    //add the PersonCardModelList modle to the view
+}
+@model Thox.Models.PersonCardModelList
+<!DOCTYPE html>
+<html lang="en">
+    <script src="~/Components/PersonCard/PersonCard_Element.js"></script>
+    <link rel="stylesheet" href="~/css/reservation.css" asp-append-version="true" />
+    <body>
+         <div class="page">
+             <div class="page_text">
+                 <h2> Aantal personen </h2>
+                 <h4> Selecteer het aantal personen waarmee u wilt escapen.</h4>
+             </div>
+         <div class="personSelector">
+             <div class="cardBx">
+                @foreach (var personCardModel in Model.personCardModelList)
+                {
+                    <Person-Card class="person-card" Title="@personCardModel.Title" Image="@personCardModel.Image" PersonCount="@personCardModel.PersonCount" SuccessPercentage="@personCardModel.SuccessPercentage" Price="@personCardModel.Price"></Person-Card>
+                }
+             </div>
+         </div>
+    </body>
+</html>

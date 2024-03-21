@@ -1,0 +1,41 @@
+﻿@model Thox.Models.RoomPrice
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <div class="admin_container">
+        <div class="admin_card">
+            <h4>RoomPrice</h4>
+            <hr />
+            <dl class="row">
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.GroupSize)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.GroupSize)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Room)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Room.RoomID)
+                </dd>
+            </dl>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model?.RoomPriceID">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+

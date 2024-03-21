@@ -1,0 +1,132 @@
+﻿:root {
+    --gradient: linear-gradient(to left, #ffc04a, #ff3300);
+    --orange: #ff8800;
+    --light-orange: #c56900;
+    --shadow: 0 10px 20px rgba(0, 0, 0, 0.219);
+    --gray: #313131;
+    --mid-gray: #3d3d3d;
+    --light-gray: #525252;
+    --X-light-gray: #616161;
+    --XX-light-gray: #898989;
+    --white: #ffffff;
+    --green: #009e00;
+    --red: rgb(122, 56, 56);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Mc;
+    text-align: left;
+    background-color: var(--gray);
+    height: 100%;
+    color: var(--white);
+    overflow-x: hidden;
+    background-attachment: fixed;
+}
+
+
+@font-face {
+    font-family: Mc;
+    src: url(../fonts/ethnocentricrg.otf);
+}
+
+@font-face {
+    font-family: rg;
+    src: url(../fonts/Kanit-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Mc;
+    scroll-behavior: smooth;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--white);
+    text-align: center;
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--white);
+    text-align: center;
+    margin: 10px 0;
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+    background-image : var(--gradient);
+    margin: 20px 0;
+}
+
+input {
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--mid-gray);
+    color: var(--white);
+}
+
+label
+{
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+    margin: 10px 0;
+    text-decoration : none  
+}
+
+a {
+    text-decoration: none;
+    color: var(--XX-light-gray);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-image: var(--gradient);
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+li {
+    list-style: none;
+}
+
+.auth_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    width: 100%;
+}
+
+.auth_card {
+    background-color: var(--gray);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+

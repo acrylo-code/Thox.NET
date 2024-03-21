@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Email Template</title>
+    <style>
+        body {
+            background-color: #313131;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        body,
+        table,
+        td,
+        th {
+            font-size: 12px;
+            color: #fff;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            color: #fff;
+        }
+
+        th,
+        td {
+            padding: 10px 0px;
+            text-align: center;
+            color: #fff;
+        }
+
+        th {
+            background-color: #3b3b3b;
+        }
+
+        .container {
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #313131;
+            height: 100%;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .content_container {
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 15px 15px 15px 15px;
+            color: white;
+            background-color: #3b3b3b;
+            padding: 0px -10px;
+        }
+
+        .content {
+            background-color: #3b3b3b;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .footer {
+            background-color: #313131;
+            padding: 20px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #616161;
+            bottom: 0;
+            font-size: 10;
+        }
+
+        .img {
+            width: 100%;
+        }
+
+        .logo {
+            max-width: 600px;
+            width : 300px;
+        }
+
+        h2,
+        p,
+        a {
+            color: #fff;
+        }
+
+        a {
+            background-color: #ff8800;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 15px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img class="logo" src="https://thox.nl/images/mailTemplate/Logo.png" alt="Logo" draggable="false">
+        </div>
+        <div class="content_container">
+            <img src="https://thox.nl/images/mailTemplate/BGtp.png" alt="Afbeelding" class="img" draggable="false">
+            <div class="content">
+                <h2>Een nieuw bericht</h2>
+                <p>
+                    Er is een nieuw bericht binnengekomen van {{name}}. Hieronder staan de gegevens van de persoon.
+                </p>
+                <img src="https://thox.nl/images/mailTemplate/Dsh.png" alt="Afbeelding" draggable="false" class="img">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{email}}</td>
+                            <td>{{phone}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <img src="https://thox.nl/images/mailTemplate/Dsh.png" alt="Afbeelding" draggable="false" class="img">
+                <h2>Bericht</h2>
+                <p>{{message}}</p>
+            </div>
+            <img src="https://thox.nl/images/mailTemplate/BGbttm.png" alt="Afbeelding" class="img" draggable="false">
+            <div class="footer">
+                &copy; 2024 Thox. All rights reserved.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

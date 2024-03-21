@@ -1,0 +1,45 @@
+﻿@model Thox.Models.Room
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div class="admin_container">
+    <div class="admin_card">
+        <h4>Room</h4>
+        <hr />
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RoomID" />
+            <div class="form-group">
+                <label asp-for="RoomName" class="control-label"></label>
+                <select asp-for="RoomName" class="form-control"></select>
+                <span asp-validation-for="RoomName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxGroupSize" class="control-label"></label>
+                <input asp-for="MaxGroupSize" class="form-control" />
+                <span asp-validation-for="MaxGroupSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinGroupSize" class="control-label"></label>
+                <input asp-for="MinGroupSize" class="form-control" />
+                <span asp-validation-for="MinGroupSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
