@@ -35,6 +35,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Admin\Views\ReservationSlots\Create.cshtml" />
+    <None Include="Areas\Admin\Views\ReservationSlots\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\ReservationSlots\Details.cshtml" />
+    <None Include="Areas\Admin\Views\ReservationSlots\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\ReservationSlots\Index.cshtml" />
     <None Include="wwwroot\Components\Calender\Calender_Element.css" />
     <None Include="wwwroot\Components\Calender\Calender_Element.html" />
     <None Include="wwwroot\Components\Calender\Calender_Element.js" />

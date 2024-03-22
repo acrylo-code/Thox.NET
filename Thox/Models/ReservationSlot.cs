@@ -10,17 +10,13 @@ namespace Thox.Models
         public int SlotID { get; set; }
 
         [Required]
-        [ForeignKey("RoomID")]
-        public Room Room { get; set; }
+        public int RoomID { get; set; }
 
         [Required]
         public DateTime ReservationDate { get; set; }
 
         [Required]
-        public TimeSpan StartTime { get; set; }
-
-        [Required]
-        public SlotState? State { get; set; } // Enum
+        public SlotState State { get; set; } // Enum
     }
     public enum SlotState
     {

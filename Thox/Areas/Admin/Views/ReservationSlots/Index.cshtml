@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Thox.Models.ReservationSlot>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="admin_container">
+    <div class="admin_card">
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        if (item.ReservationDate > DateTime.Now)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SlotID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.SlotID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.SlotID">Delete</a>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <p>The reservation date for Room ID @Html.DisplayFor(modelItem => item.RoomID) is in the past.</p>
+        }
+    }
+    </tbody>
+</table>
+</div>
+</div>

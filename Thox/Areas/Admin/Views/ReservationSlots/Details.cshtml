@@ -1,0 +1,37 @@
+﻿@model Thox.Models.ReservationSlot
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+
+<div class="admin_container">
+    <div class="admin_card">
+    <h4>ReservationSlot</h4>
+    <hr />
+            @Html.DisplayNameFor(model => model.RoomID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RoomID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ReservationDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ReservationDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+    </dl>
+     <div>
+         <a asp-action="Edit" asp-route-id="@Model?.SlotID">Edit</a> |
+         <a asp-action="Index">Back to List</a>
+     </div>
+</div>
+
