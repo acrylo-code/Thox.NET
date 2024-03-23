@@ -48,6 +48,17 @@ namespace Thox.Data
                 // Send SignalR notification
                 _signalHubContext.Clients.All.SendAsync("PriceUpdated", price);
             }
+
+
+            var modifiedSlots = ChangeTracker.Entries<ReservationSlot>()
+                .Select(e => new { Entity = e.Entity, State = e.State });
+
+            foreach (var entry in modifiedSlots)
+            {
+                // Send SignalR notification for each entity with its corresponding state
+                _signalHubContext.Clients.All.SendAsync("ReservationSlotUpdate", entry);
+            }
+
         }
     }
 }

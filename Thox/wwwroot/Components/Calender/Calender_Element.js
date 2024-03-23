@@ -1,5 +1,7 @@
 
 const template = document.createElement('template');
+let personCount;
+const connection = new signalR.HubConnectionBuilder().withUrl("/signalHub").build();
 
 try {
     fetch('../../Components/Calender/Calender_Element.html')
@@ -16,9 +18,10 @@ try {
                     shadowRoot.appendChild(template.content.cloneNode(true));
                     setupCalendar(shadowRoot);
                     //get the personCount out of the custom tag
-                    const personCount = this.getAttribute('personCount');
+                    personCount = this.getAttribute('personCount');
                     let title = shadowRoot.querySelector("#time_selector_title");
                     title.innerHTML = `Selecteer een tijdslot voor <a class="orange">${personCount}</a> personen`;
+                    handleDateChange(new Date().getTime()); 
                 }
             }
 
@@ -148,8 +151,13 @@ function setupCalendar(document) {
 }
 
 
-handleDateChange = (date) => {
-    //fetch the time slots for the selected date
+handleDateChange = (dateAttribute) => {
+    const shadowRoot = document.querySelector("mijn-element").shadowRoot;
+    const date = new Date(dateAttribute);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1; // Month is zero-based, so add 1
+    const day = date.getDate();
+    // Fetch the time slots for the selected date
     fetch('/api/reservation/getTimeSlots', {
         method: 'POST',
         headers: {
@@ -159,4 +167,157 @@ handleDateChange = (date) => {
             date: date.toISOString()
         })
     })
+        .then(response => response.json()) // Parse the JSON response
+        .then(data => {
+            // Get the array of timestamps from the data
+            const timestamps = JSON.parse(data.data);
+            console.log('Time slots:', timestamps);
+            let title = shadowRoot.querySelector("#time_selector_title");
+            title.innerHTML = `<a class="orange">${year}/${month}/${day}</a> voor <a class="orange">${personCount}</a> personen`;
+            //check if timestamps is empty
+            if (timestamps.length === 0) {
+                console.log('No time slots available for the selected date.');
+                //get all elements with id no-data and show them
+                shadowRoot.querySelectorAll('#no_date').forEach(element => {
+                    element.style.display = 'block';
+                });
+            } else {
+                shadowRoot.querySelectorAll('#no_date').forEach(element => {
+                    element.style.display = 'none';
+                });
+            }
+             
+            const container = shadowRoot.getElementById('timeSlotsContainer');
+            // Clear the container before adding new elements
+            container.innerHTML = '';
+
+            // Loop through the timestamps and create a new element for each time slot
+            timestamps.forEach(timestamp => {
+                CreateTimeSlotElement(timestamp, container);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching time slots:', error);
+            // Handle errors appropriately
+        });
 }
+
+
+let UserClickedSlot = false;
+
+// Start the connection
+connection.start()
+    .then(() => console.log('SignalR Connected.'))
+    .catch(error => console.error(error.toString()));
+
+connection.on("ReservationSlotUpdate", function (updatedSlot) {
+    console.log("ReservationSlot updated:", updatedSlot);
+    const shadowRoot = document.querySelector("mijn-element").shadowRoot;
+    const container = shadowRoot.getElementById('timeSlotsContainer');
+    let timestamp = {};
+    timestamp.AvailabilityState = updatedSlot.entity.state == 0 ? "available" : "unavailable";
+    timestamp.ReservationDate = updatedSlot.entity.reservationDate;
+
+    switch (updatedSlot.state) {
+        case 0:
+            console.log("Slot is Detached.");
+            break;
+        case 1:
+            console.log("Slot is Unchanged.");
+            break;
+        case 2:
+            console.log("Slot is reserved.");
+            DeleteTimeSlotElement(timestamp, container);
+            break;
+        case 3:
+            console.log("Slot is Modified.");
+            if (UserClickedSlot) {
+                window.location.href = "/reservation/reservationComplete";
+            }
+            UpdateTimeSlotElement(timestamp, container);
+            break;
+        case 4:
+            console.log("Slot is Added.");
+            CreateTimeSlotElement(timestamp, container);
+            break;
+        default:
+            console.error("Unknown state.");
+            break;
+    }
+});
+
+
+DeleteTimeSlotElement = (timestampToDelete, container) => {
+    container.querySelectorAll('.time_slot').forEach(timeSlot => {
+        let currentTimestamp = JSON.parse(timeSlot.getAttribute('timestamp'));
+        let timestampUTC = new Date(currentTimestamp); // Convert to UTC
+        //convert the updatedDate to a date object
+        let updatedDateUTC = new Date(timestampToDelete.ReservationDate); // Convert to UTC
+        // Compare timestamps to find matching time slots
+        if (updatedDateUTC.getTime() === timestampUTC.getTime()) {
+            timeSlot.remove(); // Corrected from Slot.remove()
+        }
+    });
+}
+
+
+//handleTimeSlotUpdate = (date) => {
+UpdateTimeSlotElement = (timestamp, container) => {
+    // Loop over all time slots and update the availability
+    let timeSlotFound = false;
+    container.querySelectorAll('.time_slot').forEach(timeSlot => {
+        let currentTimestamp = JSON.parse(timeSlot.getAttribute('timestamp'));
+        let timestampUTC = new Date(currentTimestamp); // Convert to UTC
+        //convert the updatedDate to a date object
+        let updatedDateUTC = new Date(timestamp.ReservationDate); // Convert to UTC
+        // Compare timestamps to find matching time slots
+        if (updatedDateUTC.getTime() === timestampUTC.getTime()) {
+            timeSlotFound = true;
+            if (timestamp.AvailabilityState == "available") {
+                timeSlot.classList.remove('disabled');
+            } else {
+                timeSlot.classList.add('disabled');
+            }
+        }
+    });
+}
+
+
+CreateTimeSlotElement = (timestamp, container) => {
+    const timeSlotElement = document.createElement('div');
+    timeSlotElement.classList.add('time_slot');
+    timeSlotElement.textContent = new Date(timestamp.ReservationDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    timeSlotElement.setAttribute('timestamp', JSON.stringify(timestamp.ReservationDate));
+    if (timestamp.AvailabilityState !== "available") {
+        timeSlotElement.classList.add('disabled');
+    }
+
+    timeSlotElement.addEventListener('click', () => {
+        UserClickedSlot = true;
+        connection.invoke("ReserveTimeSlot", timestamp.ReservationDate)
+            .catch(error => console.error('Error reserving time slot:', error));
+    });
+    // Append the new time slot element to the container
+    container.appendChild(timeSlotElement);
+}
+
+
+
+
+
+
+
+
+//    // Listen for ReceivePrice event
+//    connection.on("ReceivePrice", function (price) {
+//        // This handler will be invoked when the server sends the price
+//        console.log("Received price:", price);
+//        if (priceElement) {
+//            priceElement.textContent = price;
+//            console.log("Price updated." + el);
+//        } else {
+//            console.error("Element not found.");
+//        }
+//    });
+
+

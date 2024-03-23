@@ -25,7 +25,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="RoomID" class="control-label"></label>
-                <select asp-for="RoomID" class="form-control" asp-items="ViewBag.RoomID"></select>
+                @* asp-items="ViewBag.RoomID" *@
+                <select asp-for="RoomID" class="form-control">
+                    @foreach (var item in Enum.GetValues(typeof(Thox.Models.RoomName)))
+                    {
+                    <option value="@((int)item + 1)">@(item)</option>
+                    }
+                </select>
                 <span asp-validation-for="RoomID" class="text-danger"></span>
             </div>
             <div class="form-group">

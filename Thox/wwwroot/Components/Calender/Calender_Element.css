@@ -213,14 +213,15 @@ html, body {
   
     .time_selector .time_slot_grid .time_slot{
       background-color: var(--mid-gray);
-      padding: 20px;
+      padding: 10px;
       text-align: center;
       border-radius: 10px;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
   
-    .time_selector .time_slot_grid .time_slot .time_button{
+/*    .time_selector .time_slot_grid .time_slot .time_button{
       position: absolute;
       top: 0;
       left: 0;
@@ -230,11 +231,13 @@ html, body {
       color: white;
       text-decoration: none;
       padding-top : 10px;
-    }
+      cursor: pointer;
+    }*/
   
-    .time_selector .time_slot_grid .time_slot .disabled{
+    .time_selector .time_slot_grid .disabled{
       color: var(--red);
       text-decoration: none;
+      cursor: auto;
     }
   
     .time_selector .no_data{

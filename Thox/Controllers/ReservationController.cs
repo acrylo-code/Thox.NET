@@ -67,6 +67,11 @@ namespace Thox.Controllers
             return View("DateSelection", personCount);
         }
 
+        public IActionResult ReservationComplete()
+        {
+            return View();
+        }
+
     }
 }
 

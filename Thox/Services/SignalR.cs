@@ -21,5 +21,14 @@ namespace Thox.Hubs
 
             await Clients.Caller.SendAsync("ReceivePrice", price, personCount);
         }
+
+        public async Task ReserveTimeSlot(string reservationDate)
+        {
+            //update the database
+            DateTime dateTime = DateTime.Parse(reservationDate);
+            var reservationSlot = _context.ReservationSlots.Where(r => r.ReservationDate == dateTime).FirstOrDefault();
+            reservationSlot.State = SlotState.Reserved;
+            _context.SaveChanges();
+        }
     }
 }

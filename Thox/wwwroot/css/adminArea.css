@@ -131,6 +131,18 @@ li {
     width: 100%;
 }
 
+.admin_container__index {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+    .admin_container__index .admin_card {
+        margin: 10px;
+    }
+
 .admin_card {
     background-color: var(--gray);
     border-radius: 10px;

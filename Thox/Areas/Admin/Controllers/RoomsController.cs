@@ -90,9 +90,9 @@ namespace Thox.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RoomID,RoomName,MaxGroupSize,MinGroupSize")] Room room)
+        public async Task<IActionResult> Edit(int RoomID, [Bind("RoomID,RoomName,MaxGroupSize,MinGroupSize")] Room room)
         {
-            if (id != room.RoomID)
+            if (RoomID != room.RoomID)
             {
                 return NotFound();
             }
