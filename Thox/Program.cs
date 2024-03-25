@@ -78,7 +78,7 @@ app.UseEndpoints(endpoints =>
 app.Run();
 
 
-class Main
+class Settings
 {
     public static string GetApiKey(string key)
     {

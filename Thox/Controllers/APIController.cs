@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.SqlServer.Server;
+using NuGet.Configuration;
 using SQLitePCL;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
@@ -87,7 +88,7 @@ namespace Thox.Controllers
 				var client = new HttpClient();
 				var parameters = new FormUrlEncodedContent(new[]
 				{
-					new KeyValuePair<string, string>("secret", Main.GetApiKey("Recapcha_Token")),
+					new KeyValuePair<string, string>("secret", Settings.GetApiKey("Recapcha_Token")),
 					new KeyValuePair<string, string>("response", token)
 				});
 

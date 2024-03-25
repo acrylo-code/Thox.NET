@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Mail;
 using Microsoft.Identity.Client;
 using SendGrid.Helpers.Mail.Model;
+using NuGet.Configuration;
 
 namespace Thox.Mail
 {
@@ -40,7 +41,7 @@ namespace Thox.Mail
             try
             {
                 if (sendgrid_APIKEY == null)
-                    sendgrid_APIKEY = Main.GetApiKey("SendGrid_ApiKey");
+                    sendgrid_APIKEY = Settings.GetApiKey("SendGrid_ApiKey");
                 var client = new SendGridClient(sendgrid_APIKEY);
                 var from = new EmailAddress(emailMessage.FromAddress, emailMessage.FromName);
                 var to = new EmailAddress(emailMessage.ToAddress, emailMessage.ToName);

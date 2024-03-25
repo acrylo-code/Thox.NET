@@ -1,12 +1,12 @@
 
 @font-face {
     font-family: Mc;
-    src: url(../fonts/ethnocentricrg.otf);
+    src: url(fonts/ethnocentricrg.otf);
 }
 
 @font-face {
     font-family: rg;
-    src: url(../fonts/Kanit-Regular.ttf);
+    src: url(fonts/Kanit-Regular.ttf);
 }
 
 * {

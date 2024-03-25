@@ -4,13 +4,14 @@ using SendGrid;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Net.Http.Headers;
 using System.Diagnostics;
+using NuGet.Configuration;
 
 namespace Thox.Services
 {
     public class EmailSender : IEmailSender
     {
         private readonly ILogger _logger;
-        private String _apiKey = Main.GetApiKey("SendGrid_ApiKey");
+        private String _apiKey = Settings.GetApiKey("SendGrid_ApiKey");
 
         public EmailSender(ILogger<EmailSender> logger)
         {
@@ -23,7 +24,7 @@ namespace Thox.Services
             {
                 if (string.IsNullOrEmpty(_apiKey))
                 {
-                    _apiKey = Main.GetApiKey("SendGrid_ApiKey");
+                    _apiKey = Settings.GetApiKey("SendGrid_ApiKey");
                 }
                 await Mail.Mail.SendMail(new Mail.Mail.EmailMessage
                 {
