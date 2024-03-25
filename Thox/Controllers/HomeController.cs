@@ -15,11 +15,14 @@ namespace Thox.Controllers
 
         public IActionResult Index()
         {
+            // Log information
+            _logger.LogInformation("User accessed the home page");
             return View();
         }
 
         public IActionResult Privacy()
         {
+            _logger.LogInformation("User accessed the privacy page");
             return View();
         }
 

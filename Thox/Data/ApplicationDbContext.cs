@@ -16,6 +16,10 @@ namespace Thox.Data
             _signalHubContext = signalHubContext;
         }
 
+        public ApplicationDbContext()
+        {
+        }
+
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomPrice> Prices { get; set; }

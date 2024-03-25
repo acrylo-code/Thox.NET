@@ -79,6 +79,11 @@ namespace Thox.Controllers
 		{
 			try
 			{
+                if (string.IsNullOrEmpty(token))
+                {
+                    return false;
+                }
+
 				var client = new HttpClient();
 				var parameters = new FormUrlEncodedContent(new[]
 				{
@@ -92,6 +97,11 @@ namespace Thox.Controllers
                 var responseBody = await response.Content.ReadAsStringAsync();
                 // Parse the response from Google
                 dynamic responseObject = Newtonsoft.Json.JsonConvert.DeserializeObject(responseBody);
+
+                if (responseObject.success != "true")
+                {
+                    return false;
+                }
 
                 // Check if the reCAPTCHA score is above a certain threshold
                 double scoreThreshold = 0.5; // Example threshold
