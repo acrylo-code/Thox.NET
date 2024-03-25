@@ -24,9 +24,10 @@ namespace Thox.Net_test
             [Test]
             public void Index_ReturnsViewResult()
             {
-                // Arrange
-                var loggerMock = new Mock<ILogger<HomeController>>();
-                var controller = new HomeController(loggerMock.Object);
+				// Arrange
+				var mockDB = new Mock<ApplicationDbContext>();
+				var loggerMock = new Mock<ILogger<HomeController>>();
+                var controller = new HomeController(loggerMock.Object, mockDB.Object);
 
                 // Act
                 var result = controller.Index();
@@ -46,7 +47,8 @@ namespace Thox.Net_test
             {
                 // Arrange
                 var loggerMock = new Mock<ILogger<HomeController>>();
-                var controller = new HomeController(loggerMock.Object);
+				var mockDB = new Mock<ApplicationDbContext>();
+				var controller = new HomeController(loggerMock.Object, mockDB.Object);
 
                 // Act
                 var result = controller.Index();

@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model List<Thox.Models.RoomPrice>
 <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
 <body class="mars-image">
 <div class="wrapper">
@@ -16,7 +17,7 @@
 					<p class="white shadow typewriter" style="font-size: 18px;">Momenteel is deze site in aanbouw. </p>
 					
 					<div class="btns">
-						<a href="/reseveren/">
+						<a href="/reservation/">
 						<button>Reseveren</button></a>
 						<a href="">
 						<button>Bekijk video</button></a>
@@ -42,14 +43,10 @@
 				<div class="info">
 				<ul class="info-prices">
 					<ul>Prijzen</ul>
-					@* <?php 
-					$databaseConnection = connectToDatabase();
-					echo "<li><a class='orange'> 2</a> pers. ".substr_replace(getPaymentAmount($databaseConnection, "mars", 2), "-", -2)." </li>";
-					echo "<li><a class='orange'> 3</a> pers. ".substr_replace(getPaymentAmount($databaseConnection, "mars", 3), "-", -2)." </li>";
-					echo "<li><a class='orange'> 4</a> pers. ".substr_replace(getPaymentAmount($databaseConnection, "mars", 4), "-", -2)." </li>";
-					echo "<li><a class='orange'> 5</a> pers. ".substr_replace(getPaymentAmount($databaseConnection, "mars", 5), "-", -2)." </li>";
-					echo "<li><a class='orange'> 6</a> pers. ".substr_replace(getPaymentAmount($databaseConnection, "mars", 6), "-", -2)." </li>";
-					?> *@
+						@foreach (var roomPrice in Model)
+						{
+							<li><a class="orange">@roomPrice.GroupSize</a> pers : € <a class="orange">@roomPrice.Price</a>.- </li>
+						}
 					</ul>
 				</div>
 				<div class="info">
@@ -108,9 +105,9 @@
     </div>
 			
 		</div>
-    <div class="stats_container">
+     <div class="stats_container">
 			<svg id="visual2" viewBox="0 0 960 150" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><path d="M0 134L56 114L113 117L169 112L226 142L282 150L339 147L395 122L452 143L508 145L565 151L621 109L678 107L734 147L791 108L847 120L904 132L960 139L960 0L904 0L847 0L791 0L734 0L678 0L621 0L565 0L508 0L452 0L395 0L339 0L282 0L226 0L169 0L113 0L56 0L0 0Z" fill="#ff8800"></path><path d="M0 106L56 89L113 88L169 121L226 110L282 128L339 113L395 122L452 95L508 91L565 88L621 121L678 110L734 124L791 115L847 94L904 112L960 123L960 0L904 0L847 0L791 0L734 0L678 0L621 0L565 0L508 0L452 0L395 0L339 0L282 0L226 0L169 0L113 0L56 0L0 0Z" fill="#d4761c"></path><path d="M0 74L56 104L113 104L169 99L226 87L282 83L339 102L395 74L452 96L508 101L565 80L621 76L678 97L734 83L791 105L847 77L904 94L960 79L960 0L904 0L847 0L791 0L734 0L678 0L621 0L565 0L508 0L452 0L395 0L339 0L282 0L226 0L169 0L113 0L56 0L0 0Z" fill="#aa6427"></path><path d="M0 59L56 68L113 67L169 55L226 85L282 61L339 60L395 64L452 57L508 61L565 55L621 62L678 85L734 79L791 60L847 68L904 65L960 58L960 0L904 0L847 0L791 0L734 0L678 0L621 0L565 0L508 0L452 0L395 0L339 0L282 0L226 0L169 0L113 0L56 0L0 0Z" fill="#82522d"></path><path d="M0 61L56 58L113 55L169 51L226 62L282 42L339 47L395 57L452 52L508 53L565 47L621 61L678 40L734 53L791 55L847 48L904 46L960 49L960 0L904 0L847 0L791 0L734 0L678 0L621 0L565 0L508 0L452 0L395 0L339 0L282 0L226 0L169 0L113 0L56 0L0 0Z" fill="#5a4230"></path><path d="M0 28L56 23L113 24L169 27L226 29L282 31L339 38L395 29L452 21L508 35L565 21L621 28L678 26L734 34L791 35L847 26L904 23L960 21L960 0L904 0L847 0L791 0L734 0L678 0L621 0L565 0L508 0L452 0L395 0L339 0L282 0L226 0L169 0L113 0L56 0L0 0Z" fill="#313131"></path></svg>
-    <div class="stats">
+    @*<div class="stats">
       <div class="stats_card">
       <h1>Gemiddelde tijd</h1>
         <div class="number">
@@ -122,7 +119,7 @@
       <div class="stats_card">
         <h1>Ontsnappingen</h1>
         <div class="number">
-          <div class="number-animate" data-number="@* <?php echo $avgSuccess * 100?> *@"></div>
+          <div class="number-animate" data-number=""></div>
           <p> %</p>
           </div>
           <p>Van onze spelers ontsnappen de escaperoom.</p>
@@ -149,15 +146,19 @@
             <p>Hier staan alle groepen met hun tijden.</p>
             <a class="link-btn" href="/leaderboard/">Leaderboard</a>
           </div>
-
+		  *@
     </div>
     <svg id="visual" viewBox="0 390 960 150" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><path d="M0 475L60 463L120 434L180 441L240 455L300 438L360 429L420 444L480 475L540 410L600 465L660 424L720 465L780 436L840 460L900 403L960 397L960 541L900 541L840 541L780 541L720 541L660 541L600 541L540 541L480 541L420 541L360 541L300 541L240 541L180 541L120 541L60 541L0 541Z" fill="#ff8800"></path><path d="M0 431L60 475L120 462L180 404L240 477L300 438L360 447L420 448L480 431L540 437L600 466L660 410L720 472L780 400L840 436L900 449L960 413L960 541L900 541L840 541L780 541L720 541L660 541L600 541L540 541L480 541L420 541L360 541L300 541L240 541L180 541L120 541L60 541L0 541Z" fill="#e47c15"></path><path d="M0 435L60 418L120 410L180 490L240 437L300 488L360 410L420 451L480 488L540 442L600 436L660 436L720 481L780 435L840 428L900 448L960 474L960 541L900 541L840 541L780 541L720 541L660 541L600 541L540 541L480 541L420 541L360 541L300 541L240 541L180 541L120 541L60 541L0 541Z" fill="#ca711f"></path><path d="M0 453L60 459L120 476L180 464L240 466L300 444L360 498L420 426L480 453L540 435L600 430L660 484L720 430L780 453L840 486L900 461L960 490L960 541L900 541L840 541L780 541L720 541L660 541L600 541L540 541L480 541L420 541L360 541L300 541L240 541L180 541L120 541L60 541L0 541Z" fill="#b06626"></path><path d="M0 501L60 468L120 481L180 469L240 500L300 445L360 453L420 442L480 492L540 500L600 465L660 493L720 481L780 503L840 454L900 467L960 459L960 541L900 541L840 541L780 541L720 541L660 541L600 541L540 541L480 541L420 541L360 541L300 541L240 541L180 541L120 541L60 541L0 541Z" fill="#965b2a"></path><path d="M0 485L60 465L120 458L180 470L240 482L300 487L360 483L420 501L480 465L540 510L600 512L660 495L720 477L780 512L840 482L900 490L960 460L960 541L900 541L840 541L780 541L720 541L660 541L600 541L540 541L480 541L420 541L360 541L300 541L240 541L180 541L120 541L60 541L0 541Z" fill="#7d502d"></path><path d="M0 476L60 510L120 510L180 510L240 517L300 500L360 494L420 501L480 492L540 512L600 505L660 507L720 501L780 496L840 500L900 507L960 508L960 541L900 541L840 541L780 541L720 541L660 541L600 541L540 541L480 541L420 541L360 541L300 541L240 541L180 541L120 541L60 541L0 541Z" fill="#64462f"></path><path d="M0 523L60 499L120 495L180 498L240 493L300 504L360 501L420 520L480 514L540 492L600 521L660 508L720 522L780 517L840 518L900 516L960 497L960 541L900 541L840 541L780 541L720 541L660 541L600 541L540 541L480 541L420 541L360 541L300 541L240 541L180 541L120 541L60 541L0 541Z" fill="#4b3b30"></path><path d="M0 522L60 511L120 520L180 511L240 526L300 519L360 519L420 522L480 527L540 523L600 507L660 507L720 517L780 511L840 511L900 519L960 517L960 541L900 541L840 541L780 541L720 541L660 541L600 541L540 541L480 541L420 541L360 541L300 541L240 541L180 541L120 541L60 541L0 541Z" fill="#313131"></path></svg>
     <div class="map">
     <h1> Locatie </h1>
       <p class="white">Willem de Zwijgerlaan 2 Genemuiden</p>
     <div id="map"></div>
+			<footer class="border-top footer text-muted">
+				<div class="container">
+					&copy; 2024 - Thox - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+				</div>
+			</footer>
     </div>
     </div>
 	</div>
-		@* <?php include 'footer.php'; ?> *@
 </body>
