@@ -1,6 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
+<<<<<<< HEAD
 using Thox.Models.DataModels.Review;
+=======
+using Thox.Models.DataModels;
+>>>>>>> d458c49 (init)
 using Thox.modules.webscraper;
 
 namespace Thox.modules.ExternalAPI

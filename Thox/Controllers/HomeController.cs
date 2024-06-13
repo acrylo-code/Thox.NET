@@ -3,7 +3,10 @@ using System.Diagnostics;
 using Thox.Data;
 using Thox.Models.DataModels;
 using Thox.Models.ViewModels;
+<<<<<<< HEAD
 using Thox.Models.ViewModels.Home;
+=======
+>>>>>>> d458c49 (init)
 using Thox.Services;
 
 namespace Thox.Controllers
