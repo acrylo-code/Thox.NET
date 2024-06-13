@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using System.Globalization;
-using Thox.Models.DataModels;
-using Thox.Models.ViewModels;
+using Thox.Models.ViewModels.Reservation;
 
 namespace Thox.Controllers
 {

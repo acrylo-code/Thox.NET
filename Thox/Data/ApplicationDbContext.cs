@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Thox.Hubs;
 using Thox.Models.DataModels;
+using Thox.Models.DataModels.Review;
 
 
 namespace Thox.Data
@@ -24,10 +25,7 @@ namespace Thox.Data
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomPrice> Prices { get; set; }
         public DbSet<ReservationSlot> ReservationSlots { get; set; }
-        public DbSet<Reservation> Reservations { get; set; }
-        public DbSet<Game> Games { get; set; }
         public DbSet<Group> Groups { get; set; }
-        public DbSet<ApiKeys> ApiKeys { get; set; }
         public DbSet<ExternalReviewModel> ExternalReviews { get; set; }
 
         //public override int SaveChanges()

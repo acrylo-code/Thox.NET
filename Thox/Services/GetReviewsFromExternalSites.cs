@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using Thox.Data;
-using Thox.Models.DataModels;
+using Thox.Models.DataModels.Review;
 using Thox.modules.ExternalAPI;
 using Thox.modules.webscraper;
 

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
-using Thox.Models.DataModels;
+using Thox.Models.DataModels.Review;
 using Thox.modules.webscraper;
 
 namespace Thox.modules.ExternalAPI

@@ -29,15 +29,12 @@ namespace Thox.Controllers
             //_signalHubContext = signalHubContext;IHubContext<SignalHub> signalHubContext
         }
 
-        // GET: api/RoomPrices
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RoomPrice>>> GetPrices()
         {
             return await _context.Prices.ToListAsync();
         }
 
-        // GET: api/RoomPrices/5
-        [ApiKeyAuth]
         [HttpGet("{id}")]
         public async Task<ActionResult<RoomPrice>> GetRoomPrice(int id)
         {
@@ -51,9 +48,6 @@ namespace Thox.Controllers
             return roomPrice;
         }
 
-        // PUT: api/RoomPrices/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [ApiKeyAuth]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRoomPrice(int id, RoomPrice roomPrice)
         {
@@ -83,9 +77,6 @@ namespace Thox.Controllers
             return NoContent();
         }
 
-        // POST: api/RoomPrices
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [ApiKeyAuth]
         [HttpPost]
         public async Task<ActionResult<RoomPrice>> PostRoomPrice(RoomPrice roomPrice)
         {
@@ -95,8 +86,6 @@ namespace Thox.Controllers
             return CreatedAtAction("GetRoomPrice", new { id = roomPrice.RoomPriceID }, roomPrice);
         }
 
-        // DELETE: api/RoomPrices/5
-        [ApiKeyAuth]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRoomPrice(int id)
         {

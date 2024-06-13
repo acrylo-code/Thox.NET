@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Thox.Models.DataModels;
+using Thox.Models.DataModels.Review;
 
 namespace Thox.modules.webscraper
 {

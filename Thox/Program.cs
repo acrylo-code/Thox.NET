@@ -88,43 +88,4 @@ class Settings
 
         return configuration["AppSettings:" + key];
     }
-
-    static async Task TestAPI()
-    {
-        // Your API endpoint URL
-        string apiUrl = "https://localhost:7212/api/RoomPrices/";
-
-        // Your API key
-        string apiKey = "thox.WWrN3939UZYyVzKILrxBYwOpbOT3mYCR6fUQfRQQXWnJCsXYHGCpC1dMjCQbIvbl";
-
-        // Create an HttpClient instance
-        using (HttpClient client = new HttpClient())
-        {
-            // Add the API key to the request headers
-            client.DefaultRequestHeaders.Add("Api-Key", apiKey);
-
-            try
-            {
-                // Send a GET request to the API endpoint
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
-
-                // Check if the request was successful
-                if (response.IsSuccessStatusCode)
-                {
-                    // Read the response content
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    Debug.WriteLine("Response from API:");
-                    Debug.WriteLine(responseBody);
-                }
-                else
-                {
-                    Debug.WriteLine($"Failed to call API. Status code: {response.StatusCode}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"An error occurred: {ex.Message}");
-            }
-        }
-    }
 }

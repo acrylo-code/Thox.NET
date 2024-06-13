@@ -3,6 +3,7 @@ using System.Diagnostics;
 using Thox.Data;
 using Thox.Models.DataModels;
 using Thox.Models.ViewModels;
+using Thox.Models.ViewModels.Home;
 using Thox.Services;
 
 namespace Thox.Controllers

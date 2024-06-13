@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Thox.Models.ViewModels
+namespace Thox.Models.ViewModels.Reservation
 {
     public class PersonalDetailsModel
     {
