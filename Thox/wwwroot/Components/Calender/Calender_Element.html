@@ -1,9 +1,9 @@
 
 
 <link rel="stylesheet" href="../../Components/Calender/Calender_Element.css">
-<div class="calender_box">
-    <div class="calendar">
-        <div class="icons">
+<div class="calander_container">
+    <div class="calendar_item">
+        <div class="calendar_nav_icons">
             <span id="prev" class="material-symbols-rounded">< </span>
             <p class="current-date"></p>
             <span id="next" class="material-symbols-rounded"> ></span>
@@ -19,19 +19,15 @@
         </ul>
         <ul class="days" id="days"></ul>
     </div>
-    <div class="time_selector" id="time">
+    <div class="time_selector" id="no_date" >
         <h4> Selecteer een tijdstip.</h4>
         <p class="white" id="time_selector_title"> <p>
         <p class='no_data' id="no_date">geen tijdstippen beschikbaar, kijk later terug.</p>
         <p class='no_data_text' id="no_date">Dit kan zijn omdat we vandaag niet open zijn of omdat je te ver in het voren plant.</p>
-        <div class="time_slot_grid" id="timeSlotsContainer">
+        <div class="calander_timeslot_container" id="timeSlotsContainer">
             <div class="time_slot">
                
             </div>
-        </div><a class="time_button"></a>
-        <a class="time_button disabled"></a>
+        </div>
     </div>
-
-
-
 </div>

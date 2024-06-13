@@ -1,8 +1,8 @@
-﻿namespace Thox.Models
+﻿namespace Thox.Models.DataModels
 {
     public class UserModelList
     {
-        public List<UserModel>? UserModels{ get; set; }
+        public List<UserModel>? UserModels { get; set; }
     }
 
     public class UserModel

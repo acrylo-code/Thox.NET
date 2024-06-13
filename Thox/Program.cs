@@ -7,6 +7,7 @@ using SendGrid.Helpers.Mail;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Diagnostics;
 using Thox.Hubs;
+using Thox.Models.DataModels;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +24,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddScoped<GetReviewsFromExternalSites>();
 builder.Services.AddSignalR();
 
 var app = builder.Build();
@@ -34,9 +36,6 @@ app.Use(async (context, next) =>
     context.Response.Headers.Add("X-XSS-Protection", "1; mode=block");
     context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
     context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
-    //context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'");
-
-
     await next();
 });
 
@@ -72,7 +71,7 @@ app.UseEndpoints(endpoints =>
       name: "default",
       pattern: "{controller=Home}/{action=Index}/{id?}");
     endpoints.MapRazorPages();
-    endpoints.MapHub<SignalHub>("/signalHub");
+   // endpoints.MapHub<SignalHub>("/signalHub");
 });
 
 app.Run();

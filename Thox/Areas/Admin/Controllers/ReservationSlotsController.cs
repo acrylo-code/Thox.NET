@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Thox.Data;
-using Thox.Models;
+using Thox.Models.DataModels;
 
 namespace Thox.Areas.Admin.Controllers
 {

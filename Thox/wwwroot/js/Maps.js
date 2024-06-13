@@ -1,6 +1,5 @@
 var map, directionsService, directionsRenderer;
-  function initMap() {
-	console.log("initMap");
+    async function initMap() {
     // Set dark mode style
     var darkMode = [
       {
@@ -102,7 +101,7 @@ var map, directionsService, directionsRenderer;
         featureType: "water",
         elementType: "labels.text.fill",
         stylers: [{ color: "#3d3d3d" }],
-      },
+        }
     ];
     // Create map object
     map = new google.maps.Map(document.getElementById("map"), {
@@ -132,10 +131,13 @@ var map, directionsService, directionsRenderer;
     position: { lat: 52.61841006936597, lng: 6.041329898176236 },
     map: map,
     icon: {
-      url: "img/escape-marker.png", // Path to your custom marker image
+      url: "images/googleMaps/escape-marker.png", // Path to your custom marker image
       scaledSize: new google.maps.Size(60, 60), // Adjust the size of the marker
       origin: new google.maps.Point(0, 0), // Marker image origin
       anchor: new google.maps.Point(30, 60) // Anchor point of the marker
     }
-  });
+    });
+
+      var childDiv = document.getElementById('map').firstElementChild;
+      childDiv.style.backgroundColor = '#212121';
 }

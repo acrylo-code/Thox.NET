@@ -10,7 +10,7 @@ using Microsoft.Identity.Client;
 using SendGrid.Helpers.Mail.Model;
 using NuGet.Configuration;
 
-namespace Thox.Mail
+namespace Thox.modules.Mail
 {
     public class Mail
     {
@@ -50,7 +50,8 @@ namespace Thox.Mail
                 string template = GetTemplate(emailMessage.ContentType);
 
                 // Replace placeholders with actual data
-                if (emailMessage.TemplateData != null && template != null) {
+                if (emailMessage.TemplateData != null && template != null)
+                {
                     foreach (var kvp in emailMessage.TemplateData)
                     {
                         //check if the value exists in the template
@@ -63,7 +64,7 @@ namespace Thox.Mail
                 string htmlContent = template ?? emailMessage.HTMLContent;
 
                 // Create the email message 
-                var msg = MailHelper.CreateSingleEmail(from, to, emailMessage.Subject, emailMessage.PlainTextContent, htmlContent); 
+                var msg = MailHelper.CreateSingleEmail(from, to, emailMessage.Subject, emailMessage.PlainTextContent, htmlContent);
                 var response = await client.SendEmailAsync(msg);
                 if (response.StatusCode == System.Net.HttpStatusCode.Accepted)                // Check the response
                     return "success";

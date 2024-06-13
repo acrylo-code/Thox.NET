@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Thox.Data;
 
-namespace Thox.Models
+namespace Thox.Models.DataModels
 {
     public class Room
     {

@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Thox.Data;
-using Thox.Models;
 using Microsoft.AspNetCore.Authorization;
+using Thox.Models.DataModels;
 
 namespace Thox.Areas.Admin.Controllers
 {

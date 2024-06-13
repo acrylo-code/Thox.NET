@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Thox.Models;
+using Microsoft.CodeAnalysis;
+using System.Globalization;
+using Thox.Models.DataModels;
+using Thox.Models.ViewModels;
 
 namespace Thox.Controllers
 {
@@ -65,6 +68,44 @@ namespace Thox.Controllers
                 return RedirectToAction("Index");
             }
             return View("DateSelection", personCount);
+        }
+
+        public IActionResult PersonalDetails([FromQuery(Name = "personCount")] int personCount, [FromQuery(Name = "reservationDate")] string reservationDate)
+        {
+            // Validate personCount
+            if (personCount < 2 || personCount > 6)
+            {
+                return RedirectToAction("Index");
+            }
+            try
+            {
+                DateTime date = DateTime.ParseExact(reservationDate, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
+                if (date < DateTime.UtcNow)
+                    return RedirectToAction("DateSelection", new { personCount = personCount });
+            }
+            catch
+            {
+                return RedirectToAction("DateSelection", new { personCount = personCount });
+            }
+
+            return View("PersonalDetails");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PersonalDetails(PersonalDetailsModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // TODO: Handle the data (e.g., save to database)
+
+                // For example, save the reservation data:
+                // SaveReservation(model);
+
+                // Redirect to a confirmation page or another action
+                return RedirectToAction("Confirmation");
+            }
+            return View(model);
         }
 
         public IActionResult ReservationComplete()

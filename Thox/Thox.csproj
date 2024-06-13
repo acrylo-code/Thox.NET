@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.2" />
@@ -46,6 +47,10 @@
     <None Include="wwwroot\Components\PersonCard\PersonCard_Element.css" />
     <None Include="wwwroot\Components\PersonCard\PersonCard_Element.html" />
     <None Include="wwwroot\Components\PersonCard\PersonCard_Element.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\NewFolder\" />
   </ItemGroup>
 
 </Project>

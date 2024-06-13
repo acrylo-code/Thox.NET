@@ -1,58 +1,10 @@
-@font-face {
-    font-family: Mc;
-    src: url(fonts/ethnocentricrg.otf);
-}
 
-@font-face {
-    font-family: rg;
-    src: url(fonts/Kanit-Regular.ttf);
-}
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Mc;
-	scroll-behavior: smooth;
-} 
-
-:root {
-	--gradient: linear-gradient(to left, #ffc04a, #ff3300);
-	--orange: #ff8800;
-	--light-orange: #c56900;
-	--shadow : 0 10px 20px rgba(0, 0, 0, 0.219);
-	--gray: #313131;
-	--mid-gray: #3d3d3d;
-	--light-gray: #525252;
-	--X-light-gray: #616161;
-	--XX-light-gray: #898989;
-	--white: #ffffff; 
-	--green: #009e00;
-	--red: rgb(122, 56, 56);
-  }
-
-  html, body {
-    height: 100%;
-	background-attachment: fixed;
-	background-size: cover;
-}
-
-html, body {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='100%25' gradientTransform='rotate(360,1280,480)'%3E%3Cstop offset='0' stop-color='%23000000'/%3E%3Cstop offset='1' stop-color='%23494949'/%3E%3C/linearGradient%3E%3Cpattern patternUnits='userSpaceOnUse' id='b' width='548' height='456.7' x='0' y='0' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='0.02'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect x='0' y='0' fill='url(%23b)' width='100%25' height='100%25'/%3E%3C/svg%3E");
-}
-
-.orange {
-    color: #ff8800;
-}
-.white {
-    color: #ffffff;
-}
-
-.calendar .icons{
+.calendar_item .calendar_nav_icons{
     display: flex;
     justify-content: space-between;
   }
   
-  .calender_box {
+  .calander_container {
       display: flex;
       justify-content: center;
       text-align: center;
@@ -60,17 +12,18 @@ html, body {
       align-items: stretch;
       align-content: center;
       flex-wrap: wrap;
+      width: 100%;
   }
   
-  .calendar .icons #next{
+  .calendar_item .calendar_nav_icons #next{
   margin-right : 10px;
   }
   
-  .calendar .icons #prev{
+  .calendar_item .calendar_nav_icons #prev{
   margin-left : 10px;
   }
   
-  .calendar .icons span{
+  .calendar_item .calendar_nav_icons span{
       height: 38px;
       width: 38px;
       margin: 0 1px;
@@ -84,69 +37,60 @@ html, body {
       position: relative;
     }
   
-  .icons span:last-child{
+  .calendar_nav_icons span:last-child{
     margin-right: -10px;
   }
-  .calendar .icons span:hover{
+  .calendar_item .calendar_nav_icons span:hover{
     background: var(--mid-gray);
   }
-  .calendar .current-date{
+  .calendar_item .current-date{
     font-size: 1.45rem;
     font-weight: 500;
     color : var(--white);
   }
-  .calendar {
+.calendar_item {
     padding: 20px;
     background-color: var(--gray);
     align-items: center;
-    margin : 0px 20px;
+    margin: 0px 20px;
     border-radius: 10px;
     max-width: 1000px;
-  }
-  .calendar ul{
+    width: 100%;
+}
+  .calendar_item ul{
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     text-align: center;
   }
-  .calendar .days{
-    margin-bottom: 20px;
+  .calendar_item .days{
+        margin: 20px 0px;
   }
-  .calendar li{
+  .calendar_item li{
     color: white;
     width: calc(100% / 7);
     font-size: 1.07rem;
   }
-  .calendar .weeks li{
+  .calendar_item .weeks li{
     font-weight: 500;
     cursor: default;
     font-weight: bold;
   }
-  .calendar .days li{
+  .calendar_item .days li{
     z-index: 1;
     /* cursor: pointer; */
     position: relative;
-    margin-top: 30px;
-  }
-  .days li a{
-      text-decoration: none;
-      display: inline-block;
-      width: 40px; /* Adjust the size of the circle */
-      height: 40px; /* Adjust the size of the circle */
-      border-radius: 50%; /* Make it a circle */
-      text-align: center;
-      line-height: 40px; /* Vertically center the content */
-      position: inherit;
+    height: 70px
   }
 
-  .days li a{
+.days li a {
     text-decoration: none;
     display: inline-block;
-    width: 40px; /* Adjust the size of the circle */
-    height: 40px; /* Adjust the size of the circle */
+    width: 100%; /* Adjust the size of the circle */
+    height: 100%; /* Adjust the size of the circle */
     border-radius: 50%; /* Make it a circle */
     text-align: center;
-    border : none;
+    border: none;
     color: white;
     font-size: 1.2rem;
     background-color: transparent;
@@ -159,69 +103,84 @@ html, body {
   .days li.active a{
     color: #fff;
   }
-  
-  .days li.disabled a{
-      color: #686868;
-    }
-  
-  .days li::before{
+
+.days li.disabled a {
+    color: #686868;
+    width: 100%;
+    height: 100%;
+}
+
+.days li::before {
     position: absolute;
     content: "";
     left: 50%;
     top: 50%;
     height: 50px;
-    width: 50px;
+    width: 90%;
     z-index: -1;
-    border-radius: 50%;
+    border-radius: 10px;
     transform: translate(-50%, -50%);
-  }
-  .days li.active::before{
-    border: solid;
-    border-color: white;
-  }
-  
-  .days li.disabled:hover::before{
-      border: dashed;
-      border-color: var(--red);
-    }
-  
-    .days li.selected:before{
-      border: solid;
-      border-color: var(--orange);
-    }
-  
-  .days li:not(.active):hover::before{
     background: var(--mid-gray);
+}
+  
+  .days li:hover::before{
+    background: var(--light-gray);
   }
+
+.date-icon {
+    display: flex;
+    background-color : var(--gray);
+    border-radius: 50%;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size: 18px;
+    top: 0;
+    right: 0;
+}
+
+.date-icon-closed {
+    color: var(--red);
+}
+
+.date-icon-open {
+    color: var(--green);
+    z-index: 1;
+}
+
+.calander_time_selector {
+    padding: 20px;
+    background-color: var(--gray);
+    align-items: center;
+    margin: 20px 20px;
+    border-radius: 10px;
+    color: white;
+    max-width: 1000px;
+    display: none;
+}
+
+.calander_time_selector .calander_timeslot_container {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+        .calander_time_selector .calander_timeslot_container .time_slot {
+            background-color: var(--mid-gray);
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            max-width: 300px;
+            width: 100%;
+        }
   
-  .time_selector{
-      padding: 20px;
-      background-color: var(--gray);
-      align-items: center;
-      margin: 20px 20px;
-      border-radius: 10px;
-      color: white;
-      max-width: 1000px;
-    }
-  
-    .time_selector .time_slot_grid{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-        padding-top: 40px;
-    }
-  
-    .time_selector .time_slot_grid .time_slot{
-      background-color: var(--mid-gray);
-      padding: 10px;
-      text-align: center;
-      border-radius: 10px;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-  
-/*    .time_selector .time_slot_grid .time_slot .time_button{
+/*    .time_selector .calander_timeslot_container .time_slot .time_button{
       position: absolute;
       top: 0;
       left: 0;
@@ -233,22 +192,81 @@ html, body {
       padding-top : 10px;
       cursor: pointer;
     }*/
-  
-    .time_selector .time_slot_grid .disabled{
-      color: var(--red);
-      text-decoration: none;
-      cursor: auto;
+
+    .calander_time_selector .calander_timeslot_container .disabled {
+        color: var(--red);
+        text-decoration: none;
+        cursor: auto;
     }
-  
-    .time_selector .no_data{
-      color: var(--red);
-      text-align: center;
-      padding-top: 20px;
+
+    .calander_time_selector .no_data {
+        color: var(--red);
+        text-align: center;
+        padding-top: 20px;
     }
-  
-    .time_selector .no_data_text{
-      color: var(--red);
-      text-align: center;
-      padding-top: 10px;
-      font-size: 12px;
+
+    .calander_time_selector .no_data_text {
+        color: var(--red);
+        text-align: center;
+        padding-top: 10px;
+        font-size: 12px;
     }
+
+
+@media screen and (max-width: 500px) {
+    .days li a {
+        font-size: 0.9rem;
+        line-height: 50px
+    }
+
+    .days li::before {
+        border-radius: 0px;
+        width: 100%;
+        background-color: var(--gray);
+        border: 1px solid var(--mid-gray);
+    }
+
+    .calendar_item .days li {
+        z-index: 1;
+        /* cursor: pointer; */
+        position: relative;
+        height: 50px
+    }
+
+    .calendar_item li {
+        color: white;
+        width: calc(100% / 7);
+        font-size: 1.07rem;
+    }
+
+
+    .date-icon {
+        padding: 3px;
+        font-size: 12px;
+    }
+
+    .days li.selected:before {
+        background-color: var(--light-gray);
+    }
+
+}
+@media screen and (min-width: 500px) {
+    .days li a {
+        line-height: 70px
+    }
+
+    .days li.disabled:hover::before {
+        border: dashed;
+        border-color: var(--red);
+    }
+
+    .days li.selected:before {
+        border: solid;
+        border-color: var(--orange);
+    }
+
+    .days li.active:not(.selected):before {
+        border: solid;
+        border-color: var(--light-gray);
+    }
+}

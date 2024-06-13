@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Thox.Models
+namespace Thox.Models.DataModels
 {
     public class Client
     {

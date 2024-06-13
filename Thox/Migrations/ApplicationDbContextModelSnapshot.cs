@@ -266,6 +266,34 @@ namespace Thox.Migrations
                     b.ToTable("Client");
                 });
 
+            modelBuilder.Entity("Thox.Models.ExternalReviewModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double?>("NumberOfReviews")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("Score")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("SiteName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SiteUrl")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("UpdateDate")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ExternalReviews");
+                });
+
             modelBuilder.Entity("Thox.Models.Game", b =>
                 {
                     b.Property<int>("GameID")

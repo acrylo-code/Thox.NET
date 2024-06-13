@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Thox.Models;
-using Microsoft.Extensions.Configuration;
+using Thox.Models.DataModels;
 
 
 namespace Thox.Controllers

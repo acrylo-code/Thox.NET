@@ -1,4 +1,4 @@
-﻿@model Thox.Models.RoomPrice
+﻿@model RoomPrice
 
 @{
     ViewData["Title"] = "Create";
@@ -27,7 +27,7 @@
                 <label asp-for="RoomID" class="control-label"></label>
                 @* asp-items="ViewBag.RoomID" *@
                 <select asp-for="RoomID" class ="form-control" >
-                    @foreach (var item in Enum.GetValues(typeof(Thox.Models.RoomName)))
+                    @foreach (var item in Enum.GetValues(typeof(RoomName)))
                     {
                         <option value="@((int)item + 1)">@(item)</option>
                     }

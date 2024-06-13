@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Net.Http.Headers;
 using System.Diagnostics;
 using NuGet.Configuration;
+using Thox.modules.Mail;
 
 namespace Thox.Services
 {
     public class EmailSender : IEmailSender
     {
         private readonly ILogger _logger;
-        private String _apiKey = Settings.GetApiKey("SendGrid_ApiKey");
 
         public EmailSender(ILogger<EmailSender> logger)
         {
@@ -22,25 +22,19 @@ namespace Thox.Services
         {
             try
             {
-                if (string.IsNullOrEmpty(_apiKey))
-                {
-                    _apiKey = Settings.GetApiKey("SendGrid_ApiKey");
-                }
-                await Mail.Mail.SendMail(new Mail.Mail.EmailMessage
+                await Mail.SendMail(new Mail.EmailMessage
                 {
                     FromAddress = "thox.info@gmail.com",
                     FromName = "Password Recovery",
                     ToAddress = toEmail,
                     ToName = "",
                     Subject = subject,
-                    ContentType = Mail.Mail.EmailContentType.Text,
+                    ContentType = Mail.EmailContentType.Text,
                     //PlainTextContent = message,
                     HTMLContent = message
 
                 });
-                Console.WriteLine("Email sent successfully");
-                Debug.WriteLine("Email sent successfully" + message);
-                //await Execute(_apiKey, subject, message, toEmail);
+                _logger.Log(LogLevel.Information, "Email sent successfully");
             }
             catch (Exception ex)
             {

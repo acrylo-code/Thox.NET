@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using SQLitePCL;
 using System.Diagnostics;
 using Thox.Data;
-using Thox.Models;
+using Thox.Models.DataModels;
+using Thox.Models.ViewModels;
+using Thox.Services;
 
 namespace Thox.Controllers
 {
@@ -10,25 +11,25 @@ namespace Thox.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
+        private readonly GetReviewsFromExternalSites _getReviewsFromExternalSites;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, GetReviewsFromExternalSites getReviewsFromExternalSites)
         {
             _logger = logger;
             _context = context;
+            _getReviewsFromExternalSites = getReviewsFromExternalSites;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            // Log information
-            _logger.LogInformation("User accessed the home page");
-			//create a model with all roomprices
-            List<RoomPrice> roomPrices = new List<RoomPrice>();
-			foreach (var room in _context.Prices)
+            //await _getReviewsFromExternalSites.GetReviews();
+            var model = new HomeViewModel
             {
-                roomPrices.Add(room);
-			}
-			return View(roomPrices);
-		}
+                RoomPrices = _context.Prices.ToList(),
+                ExternalReviews = _context.ExternalReviews.ToList()
+            };
+            return View(model);
+        }
 
         public IActionResult Privacy()
         {

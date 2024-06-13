@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Primitives;
 using Thox.Data;
-using Thox.Models;
 using Thox.Hubs;
+using Thox.Models.DataModels;
 
 namespace Thox.Controllers
 {
@@ -21,12 +21,12 @@ namespace Thox.Controllers
     public class RoomPricesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        private readonly IHubContext<SignalHub> _signalHubContext;
+        //private readonly IHubContext<SignalHub> _signalHubContext;
 
-        public RoomPricesController(IHubContext<SignalHub> signalHubContext, ApplicationDbContext context)
+        public RoomPricesController(ApplicationDbContext context)
         {
             _context = context;
-            _signalHubContext = signalHubContext;
+            //_signalHubContext = signalHubContext;IHubContext<SignalHub> signalHubContext
         }
 
         // GET: api/RoomPrices

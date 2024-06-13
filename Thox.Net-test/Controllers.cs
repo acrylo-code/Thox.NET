@@ -6,7 +6,7 @@ using Thox.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
-using static Thox.Mail.Mail;
+using static Thox.modules.Mail.Mail;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Thox.Hubs;

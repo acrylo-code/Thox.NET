@@ -35,14 +35,6 @@ namespace Thox.Controllers
             {
                 return checkDataResult;
             }
-
-            // Assign reservationData to the appropriate property (assuming reservation is an object of a class)
-            //make a int from the string
-            //reservation.PersonCount = request.PersonCount;
-
-            // Return success respons
-
-
             return Ok(new { status = "success", message = "Reservation data received successfully.", link = "PersonCount=" + request.PersonCount });
         }
 
@@ -50,38 +42,38 @@ namespace Thox.Controllers
         [HttpPost("api/reservation/getTimeSlots")]
         public IActionResult GetTimeSlots([FromBody] TimeSlotRequest request)
         {
-            Dictionary<string, string> fieldRegexMap = new Dictionary<string, string>
-        {
-            { "Date", @"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$" },
-        };
 
-            var checkDataResult = Validation.checkData(fieldRegexMap, request);
-            if (checkDataResult != null)
+            // List to hold the parsed dates
+            List<DateTime> parsedDates = new List<DateTime>();
+
+            foreach (var dateString in request.Dates)
             {
-                return checkDataResult;
+                if (!DateTime.TryParseExact(dateString, "yyyy-MM-ddTHH:mm:ss.fffZ",
+                                            System.Globalization.CultureInfo.InvariantCulture,
+                                            System.Globalization.DateTimeStyles.AssumeUniversal | System.Globalization.DateTimeStyles.AdjustToUniversal,
+                                            out DateTime parsedDate))
+                {
+                    return BadRequest($"Invalid date format: {dateString}");
+                }
+
+                parsedDates.Add(parsedDate);
             }
 
-            // Parse the string date to DateTime
-            if (!DateTime.TryParseExact(request.Date, "yyyy-MM-ddTHH:mm:ss.fffZ",
-                                         System.Globalization.CultureInfo.InvariantCulture,
-                                         System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
-            {
-                return BadRequest("Invalid date format.");
-            }
-
-            // Get all the reservations for the date
+            // Get all the reservations for the provided dates
             var reservations = _context.ReservationSlots
-                .Where(r => r.ReservationDate.Date == parsedDate.Date)
-                .Select(r => new {
+                .Where(r => parsedDates.Select(pd => pd.Date).Contains(r.ReservationDate.Date))
+                .Select(r => new
+                {
                     ReservationDate = r.ReservationDate,
                     AvailabilityState = r.State // Assuming the name of the property for availability state
                 })
                 .ToList();
-            // Return success response
-            return Ok(new { status = "success", message = "Reservation data received successfully.", Data = reservations.ToJson()});
-        }
-    }
 
+            // Return success response
+            return Ok(new { status = "success", message = "Reservation data received successfully.", data = reservations });
+        }
+
+    }
     public class PersonCountRequest
     {
         public int PersonCount { get; set; }
@@ -89,6 +81,6 @@ namespace Thox.Controllers
 
     public class TimeSlotRequest
     {
-        public string Date { get; set; }
+        public List<string> Dates { get; set; }
     }
 }

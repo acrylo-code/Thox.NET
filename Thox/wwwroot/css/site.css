@@ -21,33 +21,33 @@
     color: #000000;
 }
 
-.black.shadow {
-    text-shadow: 3px 3px #000000;
-}
+    .black.shadow {
+        text-shadow: 3px 3px #000000;
+    }
 
 .orange {
     color: #ff8800;
 }
 
-.orange.shadow {
-    text-shadow: 3px 3px #ff880044;
-}
+    .orange.shadow {
+        text-shadow: 3px 3px #ff880044;
+    }
 
 .white {
     color: #ffffff;
 }
 
-.white.shadow {
-    text-shadow: 3px 3px #ffffff44;
-}
+    .white.shadow {
+        text-shadow: 3px 3px #ffffff44;
+    }
 
 .gray {
     color: #616161;
 }
 
-.gray.shadow {
-    text-shadow: 3px 3px #61616144;
-}
+    .gray.shadow {
+        text-shadow: 3px 3px #61616144;
+    }
 
 
 .bold {
@@ -71,6 +71,7 @@
     --orange: #ff8800;
     --light-orange: #c56900;
     --shadow: 0 10px 20px rgba(0, 0, 0, 0.219);
+    --dark-gray: #1f1f1f;
     --gray: #313131;
     --mid-gray: #3d3d3d;
     --light-gray: #525252;
@@ -113,21 +114,21 @@ html, body {
     margin: 20px 0;
 }
 
-.page_text h4 {
-    color: var(--white);
-    margin: 10px 0;
-    font-weight: normal;
-    font-size: 1rem;
-    text-align: center;
-}
+    .page_text h4 {
+        color: var(--white);
+        margin: 10px 0;
+        font-weight: normal;
+        font-size: 1rem;
+        text-align: center;
+    }
 
-.page_text h2 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--white);
-    text-align: center;
-    margin: 10px 0;
-}
+    .page_text h2 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--white);
+        text-align: center;
+        margin: 10px 0;
+    }
 
 .page_contianer {
     display: flex;
@@ -137,6 +138,38 @@ html, body {
     width: 100%;
     background-color: var(--gray);
 }
+
+.footer_container {
+    display: flex;
+    position: fixed;
+    bottom: -40px; /* Initially positioned out of view */
+    width: 100%;
+    background: var(--dark-gray);
+    justify-content: center;
+    box-sizing: border-box;
+    transition: bottom 0.3s; /* Smooth transition */
+    z-index: 1000; /* Ensure the footer is above other content */
+}
+
+.footer_item {
+    padding: 10px;
+    text-decoration: none;
+    background-color: var(--dark-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--XX-light-gray);
+}
+
+    .footer_item a {
+        padding-left: 5px;
+        color: var(--light-orange);
+    }
+
+    .footer_item span {
+        padding-right: 5px;
+    }
 
 
 .btn {
@@ -161,22 +194,22 @@ html, body {
     z-index: 1; /* Ensure button text is above pseudo-element */
 }
 
-.btn:active {
-    transform: translateY(2px);
-}
+    .btn:active {
+        transform: translateY(2px);
+    }
 
-.btn::after {
-    content: ''; /* Add content for pseudo-element */
-    background: var(--gray);
-    position: absolute; /* Position absolutely relative to the button */
-    top: 2px; /* Adjust position to be slightly smaller */
-    left: 2px; /* Adjust position to be slightly smaller */
-    right: 2px; /* Adjust position to be slightly smaller */
-    bottom: 2px; /* Adjust position to be slightly smaller */
-    border-radius: 5px; /* Slightly smaller border-radius */
-    transition: 300ms;
-    z-index: -1; /* Ensure pseudo-element is behind the button text */
-}
+    .btn::after {
+        content: ''; /* Add content for pseudo-element */
+        background: var(--gray);
+        position: absolute; /* Position absolutely relative to the button */
+        top: 2px; /* Adjust position to be slightly smaller */
+        left: 2px; /* Adjust position to be slightly smaller */
+        right: 2px; /* Adjust position to be slightly smaller */
+        bottom: 2px; /* Adjust position to be slightly smaller */
+        border-radius: 5px; /* Slightly smaller border-radius */
+        transition: 300ms;
+        z-index: -1; /* Ensure pseudo-element is behind the button text */
+    }
 
 .btn--disabled {
     background-color: var(--mid-gray);
@@ -211,11 +244,11 @@ html, body {
     height: 12em;
 }
 
-.loader path {
-    stroke: var(--orange);
-    stroke-width: 4px;
-    animation: dashPulse 5s linear infinite;
-}
+    .loader path {
+        stroke: var(--orange);
+        stroke-width: 4px;
+        animation: dashPulse 5s linear infinite;
+    }
 
 @keyframes dashPulse {
     0% {
@@ -281,24 +314,24 @@ html, body {
     justify-content: center;
 }
 
-.gdpr-consent-description i {
-    position: absolute;
-    display: flex;
-    top: 10px;
-    left: 10px;
-    color: transparent;
-    background-image: var(--gradient);
-    height: 40px;
-    width: 40px;
-    background-clip: text;
-    align-items: center;
-    justify-content: center;
-}
+    .gdpr-consent-description i {
+        position: absolute;
+        display: flex;
+        top: 10px;
+        left: 10px;
+        color: transparent;
+        background-image: var(--gradient);
+        height: 40px;
+        width: 40px;
+        background-clip: text;
+        align-items: center;
+        justify-content: center;
+    }
 
-.gdpr-consent-description p {
-    color: var(--XX-light-gray);
-    padding-left: 60px;
-}
+    .gdpr-consent-description p {
+        color: var(--XX-light-gray);
+        padding-left: 60px;
+    }
 
 .gdpr-consent__choice {
     display: flex;
@@ -316,9 +349,9 @@ html, body {
     cursor: pointer;
 }
 
-.gdpr-consent__button--accept:hover {
-    background-image: var(--gradient);
-}
+    .gdpr-consent__button--accept:hover {
+        background-image: var(--gradient);
+    }
 
 .gdpr-consent__button--reject {
     background-color: var(--light-gray);
@@ -328,9 +361,9 @@ html, body {
     cursor: pointer;
 }
 
-.gdpr-consent__button--reject:hover {
-    background-image: var(--gradient);
-}
+    .gdpr-consent__button--reject:hover {
+        background-image: var(--gradient);
+    }
 
 .hide {
     display: none;

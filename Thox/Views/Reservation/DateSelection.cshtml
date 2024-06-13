@@ -1,16 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
     ViewData["Title"] = "Datum";
-    //retrieve the Personcount form the controller
-    var personCount = ViewBag.PersonCount;
 }
 
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.9/signalr.min.js"></script>
-<script src="~/Components/Calender/Calender_Element.js"></script>
+@* <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.9/signalr.min.js"></script> *@
+<script defer src="~/Components/Calender/Calender_Element.js"></script>
+<link rel="stylesheet" href="~/Components/Calender/Calender_Element.css" asp-append-version="true" />
 <body>
-    <Mijn-Element personCount="@Model"></Mijn-Element>
+    <div class="page">
+        <div class="page_text">
+            <h2> Datum & tijd </h2>
+            <h4> Selecteer de datum en het tijdstip voor uw reservatie.</h4>
+        </div>
+        <div class="calander_container">
+            <div class="calendar_item">
+                <div class="calendar_nav_icons">
+                    <span id="prev" class="material-symbols-rounded">< </span>
+                    <p class="current-date"></p>
+                    <span id="next" class="material-symbols-rounded"> ></span>
+                </div><br>
+                <ul class="weeks">
+                    <li>Zo</li>
+                    <li>Ma</li>
+                    <li>Di</li>
+                    <li>Wo</li>
+                    <li>Do</li>
+                    <li>Vr</li>
+                    <li>Za</li>
+                </ul>
+                <ul class="days" id="days"></ul>
+            </div>
+            <div class="calander_time_selector" id="time_selector">
+                <h4> Selecteer een tijdstip.</h4>
+                <p class="white" id="time_selector_title"> </p><p</a> voor <a class="orange"> @Model </a> personen</p>
+                <p class='no_data' id="no_date">Sorry.</p>
+                <p class='no_data_text' id="no_date">Er zijn vandaag (nog) geen beschikbare tijden.</p>
+                <div class="calander_timeslot_container" id="timeSlotsContainer">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>

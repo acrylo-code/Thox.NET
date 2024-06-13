@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
     font-family: Mc;
     src: url(fonts/ethnocentricrg.otf);
 }
@@ -43,7 +43,7 @@ html, body {
 .svg {
     fill: #ff8800;
     height: 12px;
-}
+}*/
 
 /*.personSelector {
     width: 100%;

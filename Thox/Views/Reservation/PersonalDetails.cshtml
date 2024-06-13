@@ -1,0 +1,100 @@
+﻿@page
+@* @model Thox.Views.Reservation.PersonalDetailsModel *@
+
+@model Thox.Models.ViewModels.PersonalDetailsModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Reservering</title>
+    <link rel="stylesheet" href="~/css/reservation.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+</head>
+<body>
+    <div class="page">
+        <div class="page_text">
+            <h2> Persoonlijke details </h2>
+            <h4> Voer uw informatie in zodat we u kunnen bereiken.</h4>
+        </div>
+
+        <div class="detail_box">
+            <div class="detail">
+                <h5> Uw groepsnaam is online zichtbaar.</h5>
+
+                @using (Html.BeginForm("PersonalDetails", "Reservation", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <br>
+                    <div class="details-grid-container">
+                        <div class="detail-grid">
+                            <label>Voornaam*:</label>
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "input" })
+                            @Html.ValidationMessageFor(m => m.FirstName)
+
+                            <label>Tussenvoegsel:</label>
+                            @Html.TextBoxFor(m => m.Insertion, new { @class = "input" })
+                            @Html.ValidationMessageFor(m => m.Insertion)
+
+                            <label>Achternaam*:</label>
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "input" })
+                            @Html.ValidationMessageFor(m => m.LastName)
+                        </div>
+
+                        <div class="detail-grid">
+                            <label>Email*:</label>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "input" })
+                            @Html.ValidationMessageFor(m => m.Email)
+
+                            <label>Telefoonnummer*:</label>
+                            @Html.TextBoxFor(m => m.Phone, new { @class = "input", id = "phone" })
+                            @Html.ValidationMessageFor(m => m.Phone)
+
+                            <label>Ervaring:</label>
+                            @Html.DropDownListFor(m => m.Experience, new SelectList(new[]
+                                     {
+                        new { Value = "eerste_keer", Text = "Eerste keer" },
+                        new { Value = "beginner", Text = "Beginner (0-5 kamers)" },
+                        new { Value = "gemiddeld", Text = "Gemiddeld (5-10 kamers)" },
+                        new { Value = "expert", Text = "Expert (10+ kamers)" }
+                        }, "Value", "Text"), new { @class = "input" })
+                            @Html.ValidationMessageFor(m => m.Experience)
+                        </div>
+
+                        <div class="detail-grid">
+                            <label>Groep Naam*:</label>
+                            @Html.TextBoxFor(m => m.GroupName, new { @class = "input" })
+                            @Html.ValidationMessageFor(m => m.GroupName)
+
+                            <label>Groep omschrijving:</label>
+                            @Html.TextAreaFor(m => m.GroupDescription, new { rows = 7, cols = 5 })
+                            @Html.ValidationMessageFor(m => m.GroupDescription)
+                        </div>
+
+                        <div class="detail-grid">
+                            <label>Betaling*:</label>
+                            <div>
+                                @Html.RadioButtonFor(m => m.Payment, "pin") <i class="orange fa-regular fa-credit-card"></i><br />
+                                @Html.RadioButtonFor(m => m.Payment, "contant") <i class="orange fa-solid fa-money-bill-wave"></i><br />
+                                @Html.RadioButtonFor(m => m.Payment, "ideal") <i class="orange fa-brands fa-ideal"></i>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Payment)
+                        </div>
+                    </div>
+
+                    <input class="details-button" type="submit" value="Reserveer" />
+                }
+            </div>
+        </div>
+    </div>
+    <script>
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            initialCountry: "nl",
+            utilsScript:
+                "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+    </script>
+</body>
+</html>

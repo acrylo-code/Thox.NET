@@ -5,7 +5,7 @@ using NuGet.Configuration;
 using SQLitePCL;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using Thox.Mail;
+using Thox.modules.Mail;
 
 namespace Thox.Controllers
 {
@@ -43,9 +43,9 @@ namespace Thox.Controllers
             try
             {
 
-                var mailStatus = Mail.Mail.SendMail(new Mail.Mail.EmailMessage
+                var mailStatus = Mail.SendMail(new Mail.EmailMessage
                 {
-                    ContentType = Mail.Mail.EmailContentType.ContactForm,
+                    ContentType = Mail.EmailContentType.ContactForm,
                     FromAddress = "thox.info@gmail.com",
                     FromName = $"{formData.FirstName} {formData.LastName}",
                     ToAddress = "henk.acrylonitril@gmail.com",

@@ -1,4 +1,4 @@
-namespace Thox.Models
+namespace Thox.Models.DataModels
 {
     public class ErrorViewModel
     {

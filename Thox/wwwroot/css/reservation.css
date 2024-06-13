@@ -1,31 +1,450 @@
-﻿.personSelector {
+﻿.personcard_container {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    height: auto;
+    align-content: center;
     margin: 20px auto;
 }
 
-.personSelector h2 {
-    color: #fff;
-    margin: 10px 0;
+a {
+    text-decoration: none;
 }
 
-.personSelector h4 {
-    color: #fff;
-    margin: 10px 0;
-    font-weight: normal;
+.card {
+    width: 280px;
+    border-radius: 10px;
+    /*margin: 20px 40px;*/
+    margin: 24px 20px;
+    background: var(--mid-gray);
+    overflow: hidden;
+    position: relative;
 }
 
-    .personSelector .cardBx {
-        width: 100%;
-        min-height: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        height: auto;
-        align-content: center;
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(255, 136, 0, 0.2);
+        border: 4px solid var(--orange);
+        /*margin : 16px 36px;*/
+        width: 284px;
+        margin: 20px 18px;
     }
 
+    .card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .card .cardtitle {
+        position: absolute;
+        margin-top: 60px;
+        width: 280px;
+        font-size: 18px;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+    }
+
+
+    .card .content {
+        padding: 10px;
+    }
+
+        .card .content h4 {
+            color: #fff;
+            margin: 15px 0;
+        }
+
+    .card .progress-line {
+        position: relative;
+        width: 100%;
+        height: 10px;
+        background: var(--gray);
+        border-radius: 10px;
+        margin-bottom: 15px;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+    }
+
+        .card .progress-line span {
+            position: absolute;
+            height: 100%;
+            background: var(--gradient);
+            box-shadow: 0 0 10px var(--orange);
+            transform-origin: left;
+            transform: scaleX(0);
+            animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+        }
+
+@keyframes animate {
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.card .info {
+    border-top: 2px solid var(--gray);
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .card .info p {
+        font-size: 1em;
+        color: #fff;
+    }
+
+        .card .info p span {
+            color: var(--orange);
+        }
+
+    .card .info a {
+        padding: 5px 10px;
+        color: #fff;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 0.8em;
+    }
+
+        .card .info a:hover {
+            background: var(--gradient);
+        }
+
+.card .content .line-text {
+    color: var(--X-light-gray);
+    font-size: x-small;
+    transform: translateY(-5px);
+}
+
+
+/*
+    Reservation Details
+*/
+.detail_box {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+    .detail_box h5 {
+        color: var(--X-light-gray);
+        margin: 10px 0;
+        font-weight: normal;
+    }
+
+.detail {
+    padding: 10px;
+    background-color: var(--gray);
+    margin: 0 20px;
+    align-items: center;
+    border-radius: 10px;
+}
+
+    /* .detail .registerbox{
+	background-color: var(--X-light-gray);
+	border-radius: 5px;
+} */
+
+    .detail label {
+        padding: 10px;
+        color: white;
+    }
+
+/*-------------*/
+
+
+.round_button {
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    color: #ffffff;
+    text-decoration: none;
+    background: none;
+    color: inherit;
+    border: none;
+    width: 80px;
+}
+
+    .round_button::before {
+        position: absolute;
+        content: "";
+        left: 50%;
+        top: 50%;
+        height: 40px;
+        width: 80px;
+        z-index: -1;
+        border-radius: 10px;
+        transform: translate(-50%, -50%);
+        background: var(--mid-gray);
+        margin-bottom: 10px;
+    }
+
+    .round_button:hover::before {
+        background: var(--green);
+    }
+
+/* .top_right{
+	position: relative;
+	top: 0;
+	right: 0;
+	margin-right: 26px;
+} */
+
+
+.add_button {
+    cursor: pointer;
+    position: relative;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    background: var(--mid-gray);
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+    .add_button:hover {
+        background: var(--green);
+    }
+
+.remove_button {
+    cursor: pointer;
+    position: absolute;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    top: 0;
+    right: 5px;
+    padding: 2px 5px;
+}
+
+    .remove_button:hover {
+        background: var(--red);
+    }
+
+.error {
+    color: var(--red);
+    font-size: 12px;
+}
+
+.details-grid-container {
+    display: grid;
+    /*scale with the screen*/
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+    justify-content: center;
+}
+
+
+    .details-grid-container .detail-grid {
+        padding-bottom: 10px;
+        border-radius: 10px;
+        background-color: var(--mid-gray);
+        padding: 10px;
+        color: #fff;
+        transition: 0.5s;
+    }
+
+.detail-grid a {
+    margin-top: 10px;
+}
+
+
+.details-grid-container .detail-grid:hover {
+    transform: translateY(-5px);
+    transition: 0.5s;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.219);
+    z-index: 1;
+}
+
+.details-grid-container div .input {
+    width: 100%;
+    background-color: var(--X-light-gray);
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    padding-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.input_admin {
+    background-color: var(--X-light-gray);
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    padding-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.details-grid-container div select {
+    background-color: var(--X-light-gray);
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    padding-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.details-grid-container div textarea {
+    background-color: var(--X-light-gray);
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.details-grid-container div textarea {
+    width: 100%;
+    resize: none;
+}
+
+.details-button {
+    height: 40px;
+    /* width: 150px; */
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    border: 3px solid var(--orange);
+    color: #ffffff;
+    padding: 0px 10px;
+    background: transparent;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.details-a-ref {
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    border: 3px solid var(--light-gray);
+    color: #ffffff;
+    background: transparent;
+    padding: 5px 15px;
+    margin-top: 10px;
+}
+
+.details-button:hover {
+    background-image: var(--gradient);
+    transition: all 0.3s ease;
+}
+
+.details-a-ref:hover {
+    background-color: var(--X-light-gray);
+    transition: all 0.3s ease;
+}
+
+
+#phone {
+    padding-left: 50px;
+    width: 100%;
+    background-color: var(--X-light-gray);
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    margin-top: 5px;
+}
+
+
+
+.iti__country-list {
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.payment_container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    /* Hide the browser's default radio button */
+    .payment_container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .payment_container a {
+        margin-left: 20px;
+    }
+
+        .payment_container a.location {
+            font-size: 12px;
+            color: var(--X-light-gray);
+            margin-left: 20px;
+        }
+
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 10;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: var(--light-gray);
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.payment_container:hover input ~ .checkmark {
+    background-color: var(--X-light-gray);
+}
+
+/* When the radio button is checked, add a blue background */
+.payment_container input:checked ~ .checkmark {
+    background-color: var(--orange);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.payment_container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.payment_container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.iti {
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

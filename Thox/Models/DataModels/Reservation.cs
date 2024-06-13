@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Thox.Data;
 
-namespace Thox.Models
+namespace Thox.Models.DataModels
 {
     public class Reservation
     {

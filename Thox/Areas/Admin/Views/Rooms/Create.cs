@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Thox.Models;
+using Thox.Models.DataModels;
 
 namespace Thox.Areas.Admin.Views.Rooms
 {
