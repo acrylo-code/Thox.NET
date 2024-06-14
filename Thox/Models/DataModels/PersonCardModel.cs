@@ -1,8 +1,5 @@
-<<<<<<<< HEAD:Thox/Models/ViewModels/Reservation/PersonCardModel.cs
-﻿namespace Thox.Models.ViewModels.Reservation
-========
+
 ﻿namespace Thox.Models.DataModels
->>>>>>>> d458c49 (init):Thox/Models/DataModels/PersonCardModel.cs
 {
     public class PersonCardModel
     {

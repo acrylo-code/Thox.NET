@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using Thox.Data;
-<<<<<<< HEAD
 using Thox.Models.DataModels.Review;
-=======
-using Thox.Models.DataModels;
->>>>>>> d458c49 (init)
 using Thox.modules.ExternalAPI;
 using Thox.modules.webscraper;
 
